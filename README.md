@@ -10,6 +10,7 @@ A Spring Boot application for managing and distributing software packages.
 - File size limit enforcement
 - RESTful API endpoints
 - Swagger documentation
+- Modular storage architecture (File System and Object Storage)
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ A Spring Boot application for managing and distributing software packages.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/repsy-package-manager.git
+git clone https://github.com/sametyilmaztemel/repsy-package-manager.git
 cd repsy-package-manager
 ```
 
@@ -36,6 +37,46 @@ cd repsy-package-manager
 ```
 
 The application will start on `http://localhost:8080`
+
+## Storage Modules
+
+Repsy Package Manager uses a modular storage architecture with two implementations:
+
+### File System Storage
+
+A storage implementation that saves packages to the local file system.
+
+- Repository: [repsy-storage-file-system](https://github.com/sametyilmaztemel/repsy-storage-file-system)
+- Features:
+  - Local file system based storage
+  - Directory structure by package/version
+  - Path validation and security
+
+### Object Storage
+
+A storage implementation that saves packages to object storage services like MinIO or S3.
+
+- Repository: [repsy-storage-object-storage](https://github.com/sametyilmaztemel/repsy-storage-object-storage)
+- Features:
+  - Compatible with S3-like object storage (MinIO, AWS S3, etc.)
+  - Bucket-based organization
+  - Streaming upload/download
+
+### Deploying Storage Modules
+
+The project includes a deployment script `deploy-github.sh` that facilitates deploying the storage modules as separate GitHub repositories:
+
+```bash
+# Make the script executable
+chmod +x deploy-github.sh
+
+# Run the deployment script
+./deploy-github.sh
+```
+
+The script offers two options:
+1. Direct deployment to GitHub using personal access token
+2. Creating ZIP archives for manual upload
 
 ## API Documentation
 
@@ -52,21 +93,14 @@ The application uses Spring Security with basic authentication. By default:
 ## Project Structure
 
 ```
-src/
-├── main/
-│   ├── java/
-│   │   └── com/repsy/packagemanager/
-│   │       ├── config/         # Configuration classes
-│   │       ├── controller/     # REST controllers
-│   │       ├── entity/         # JPA entities
-│   │       ├── exception/      # Exception handling
-│   │       ├── model/          # Data models
-│   │       ├── repository/     # JPA repositories
-│   │       ├── service/        # Business logic
-│   │       └── storage/        # File storage strategies
-│   └── resources/
-│       └── application.yml     # Application configuration
-└── test/                       # Test classes
+./
+├── src/                        # Main application code
+├── storage-modules/            # Storage module implementations
+│   ├── repsy-storage-file-system/
+│   └── repsy-storage-object-storage/
+├── deploy.sh                   # Main deployment script
+├── deploy-github.sh            # Storage modules deployment script
+└── deploy-docker.sh            # Docker deployment script
 ```
 
 ## Testing
