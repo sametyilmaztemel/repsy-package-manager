@@ -1,0 +1,26 @@
+Subject: Repsy Package Manager Implementation Submission
+
+Merhaba,
+
+Repsy Package Manager implementasyonunu tamamladım. Detaylar aşağıdadır:
+
+1. GitHub Repository:
+   - URL: https://github.com/sametyilmaztemel/repsy-package-manager
+   - Commit geçmişi düzgün şekilde tutulmuştur
+
+2. Storage Modülleri:
+   - File System Storage: https://github.com/sametyilmaztemel/repsy-storage-file-system
+   - Object Storage: https://github.com/sametyilmaztemel/repsy-storage-object-storage
+
+3. Docker Container:
+   - Image: repsy/package-manager:latest
+   - Docker Hub: https://hub.docker.com/r/sametyilmaztemel/repsy-package-manager
+
+4. Proje Dokümantasyonu:
+   - README.md ve README.tr.md dosyaları hazırlanmıştır
+   - Kurulum adımları ve API kullanımı detaylı olarak belgelenmiştir
+
+Projeyi incelemenizi rica ederim. Herhangi bir sorunuz olursa yardımcı olmaktan memnuniyet duyarım.
+
+Saygılarımla,
+Samet Yılmaz Temel
